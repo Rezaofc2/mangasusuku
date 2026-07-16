@@ -8,12 +8,18 @@ import { Search as SearchIcon, Compass, ChevronLeft, ChevronRight } from "lucide
 
 export const revalidate = 60;
 
+// Menyesuaikan dengan format { results, total, page } yang dikembalikan oleh API
 async function fetchResults(q: string, page: number): Promise<MangaCardData[]> {
   const path = q ? "/api/mangasusuku/search" : "/api/mangasusuku/ongoing";
   const params: Record<string, string | number> = { page };
   if (q) params.q = q;
-  const res = await apiGet<MangaCardData[]>(path, params);
-  return Array.isArray(res) ? res : [];
+  const res = await apiGet<any>(path, params);
+
+  if (!res) return [];
+  if (Array.isArray(res)) return res as MangaCardData[];
+  if (res && Array.isArray(res.results)) return res.results as MangaCardData[];
+  if (res && Array.isArray(res.data)) return res.data as MangaCardData[];
+  return [];
 }
 
 export default async function SearchPage({
