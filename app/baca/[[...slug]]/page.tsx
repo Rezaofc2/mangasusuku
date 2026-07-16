@@ -68,6 +68,7 @@ export default async function BacaPage({ params }: { params: Promise<{ slug?: st
         </h1>
       </div>
 
+      {/* Navigasi atas */}
       <ChapterNav prev={prevHref} next={nextHref} mangaHref={mangaHref} />
 
       <div className="max-w-3xl mx-auto px-2 md:px-4 py-4 flex flex-col items-center">
@@ -77,36 +78,57 @@ export default async function BacaPage({ params }: { params: Promise<{ slug?: st
         ))}
       </div>
 
+      {/* Navigasi bawah */}
       <ChapterNav prev={prevHref} next={nextHref} mangaHref={mangaHref} bottom />
     </div>
   );
 }
 
 function ChapterNav({ prev, next, mangaHref, bottom }: { prev: string | null; next: string | null; mangaHref: string | null; bottom?: boolean; }) {
+  const btnBase = "inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-full text-sm font-medium transition-all active:scale-95 select-none touch-manipulation min-h-[44px]";
+
   return (
-    <div className={`max-w-3xl mx-auto px-4 ${bottom ? "pt-4 pb-16" : "pb-2"}`}>
+    <div className={`relative z-10 max-w-3xl mx-auto px-4 ${bottom ? "pt-4 pb-16" : "pb-2"}`}>
       <div className="grid grid-cols-3 gap-2">
+        {/* Tombol Sebelumnya */}
         {prev ? (
-          <Link href={prev} className="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 bg-white/5 border border-white/10 rounded-full text-sm text-slate-200 hover:bg-white/10 transition-colors">
-            <ChevronLeft size={16} /><span>Sebelumnya</span>
+          <Link
+            href={prev}
+            className={`${btnBase} bg-white/5 border border-white/10 text-slate-200 hover:bg-white/10 hover:border-white/20`}
+          >
+            <ChevronLeft size={16} />
+            <span className="text-xs sm:text-sm">Sebelumnya</span>
           </Link>
         ) : (
-          <span className="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 bg-white/[0.02] border border-white/5 rounded-full text-sm text-slate-600 cursor-not-allowed">
-            <ChevronLeft size={16} /><span>Sebelumnya</span>
+          <span className={`${btnBase} bg-white/[0.02] border border-white/5 text-slate-600 cursor-not-allowed pointer-events-none`}>
+            <ChevronLeft size={16} />
+            <span className="text-xs sm:text-sm">Sebelumnya</span>
           </span>
         )}
-        <Link href={mangaHref || "/"} className="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 bg-white/5 border border-white/10 rounded-full text-sm text-slate-200 hover:bg-white/10 transition-colors">
+
+        {/* Tombol Daftar Chapter */}
+        <Link
+          href={mangaHref || "/"}
+          className={`${btnBase} bg-white/5 border border-white/10 text-slate-200 hover:bg-white/10 hover:border-white/20`}
+        >
           <List size={14} />
-          <span className="hidden sm:inline">Daftar Chapter</span>
-          <span className="sm:hidden">List</span>
+          <span className="hidden sm:inline text-xs sm:text-sm">Daftar Chapter</span>
+          <span className="sm:hidden text-xs">List</span>
         </Link>
+
+        {/* Tombol Berikutnya */}
         {next ? (
-          <Link href={next} className="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 bg-gradient-to-r from-amber-400 to-pink-500 text-slate-950 rounded-full text-sm font-bold hover:shadow-lg hover:shadow-amber-500/30 transition-shadow">
-            <span>Berikutnya</span><ChevronRight size={16} />
+          <Link
+            href={next}
+            className={`${btnBase} bg-gradient-to-r from-amber-400 to-pink-500 text-slate-950 font-bold hover:shadow-lg hover:shadow-amber-500/30 hover:brightness-110`}
+          >
+            <span className="text-xs sm:text-sm">Berikutnya</span>
+            <ChevronRight size={16} />
           </Link>
         ) : (
-          <span className="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 bg-white/[0.02] border border-white/5 rounded-full text-sm text-slate-600 cursor-not-allowed">
-            <span>Berikutnya</span><ChevronRight size={16} />
+          <span className={`${btnBase} bg-white/[0.02] border border-white/5 text-slate-600 cursor-not-allowed pointer-events-none`}>
+            <span className="text-xs sm:text-sm">Berikutnya</span>
+            <ChevronRight size={16} />
           </span>
         )}
       </div>
