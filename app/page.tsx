@@ -48,7 +48,7 @@ export default async function HomePage() {
                 Online Gratis
               </h1>
               <p className="mt-4 text-base md:text-lg text-slate-300 max-w-lg leading-relaxed">
-                Manhwa, Manga, dan Manhua terbaik dalam satu tempat. Bypass blokir otomatis tanpa VPN.
+                Manhwa dewasa terbaik dalam satu tempat tanpa VPN.
               </p>
               <div className="flex flex-wrap items-center gap-3 mt-6">
                 <Link href="/search?q=" className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-amber-400 to-pink-500 text-slate-950 rounded-full font-semibold hover:shadow-lg hover:shadow-amber-500/30 hover:-translate-y-0.5 transition-all">
