@@ -66,10 +66,10 @@ export default async function BacaPage({ params }: { params: Promise<{ slug?: st
           <BookOpen size={18} className="text-amber-400" />
           {data.title || "Baca Chapter"}
         </h1>
-      </div>
 
-      {/* Navigasi atas */}
-      <ChapterNav prev={prevHref} next={nextHref} mangaHref={mangaHref} />
+        {/* Navigasi atas — gaya simple text link seperti Kembali */}
+        <ChapterNav prev={prevHref} next={nextHref} mangaHref={mangaHref} />
+      </div>
 
       <div className="max-w-3xl mx-auto px-2 md:px-4 py-4 flex flex-col items-center">
         {data.images.map((src, i) => (
@@ -79,56 +79,51 @@ export default async function BacaPage({ params }: { params: Promise<{ slug?: st
       </div>
 
       {/* Navigasi bawah */}
-      <ChapterNav prev={prevHref} next={nextHref} mangaHref={mangaHref} bottom />
+      <div className="max-w-3xl mx-auto px-4 pt-4 pb-16">
+        <ChapterNav prev={prevHref} next={nextHref} mangaHref={mangaHref} />
+      </div>
     </div>
   );
 }
 
-function ChapterNav({ prev, next, mangaHref, bottom }: { prev: string | null; next: string | null; mangaHref: string | null; bottom?: boolean; }) {
-  const btnBase = "inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-full text-sm font-medium transition-all active:scale-95 select-none touch-manipulation min-h-[44px]";
+function ChapterNav({ prev, next, mangaHref }: { prev: string | null; next: string | null; mangaHref: string | null; }) {
+  // Gaya sama persis dengan tombol "Kembali": simple text link
+  const linkClass = "inline-flex items-center gap-1.5 text-sm text-slate-400 hover:text-white transition-colors";
 
   return (
-    <div className={`relative z-10 max-w-3xl mx-auto px-4 ${bottom ? "pt-4 pb-16" : "pb-2"}`}>
-      <div className="grid grid-cols-3 gap-2">
-        {/* Tombol Sebelumnya */}
+    <div className="flex items-center justify-between mt-3">
+      {/* Sebelumnya */}
+      <div>
         {prev ? (
-          <Link
-            href={prev}
-            className={`${btnBase} bg-white/5 border border-white/10 text-slate-200 hover:bg-white/10 hover:border-white/20`}
-          >
-            <ChevronLeft size={16} />
-            <span className="text-xs sm:text-sm">Sebelumnya</span>
+          <Link href={prev} className={linkClass}>
+            <ChevronLeft size={14} />
+            Sebelumnya
           </Link>
         ) : (
-          <span className={`${btnBase} bg-white/[0.02] border border-white/5 text-slate-600 cursor-not-allowed pointer-events-none`}>
-            <ChevronLeft size={16} />
-            <span className="text-xs sm:text-sm">Sebelumnya</span>
+          <span className="inline-flex items-center gap-1.5 text-sm text-slate-600 cursor-not-allowed">
+            <ChevronLeft size={14} />
+            Sebelumnya
           </span>
         )}
+      </div>
 
-        {/* Tombol Daftar Chapter */}
-        <Link
-          href={mangaHref || "/"}
-          className={`${btnBase} bg-white/5 border border-white/10 text-slate-200 hover:bg-white/10 hover:border-white/20`}
-        >
-          <List size={14} />
-          <span className="hidden sm:inline text-xs sm:text-sm">Daftar Chapter</span>
-          <span className="sm:hidden text-xs">List</span>
-        </Link>
+      {/* List Chapter */}
+      <Link href={mangaHref || "/"} className={linkClass}>
+        <List size={14} />
+        List
+      </Link>
 
-        {/* Tombol Berikutnya */}
+      {/* Berikutnya */}
+      <div>
         {next ? (
-          <Link
-            href={next}
-            className={`${btnBase} bg-gradient-to-r from-amber-400 to-pink-500 text-slate-950 font-bold hover:shadow-lg hover:shadow-amber-500/30 hover:brightness-110`}
-          >
-            <span className="text-xs sm:text-sm">Berikutnya</span>
-            <ChevronRight size={16} />
+          <Link href={next} className={linkClass}>
+            Berikutnya
+            <ChevronRight size={14} />
           </Link>
         ) : (
-          <span className={`${btnBase} bg-white/[0.02] border border-white/5 text-slate-600 cursor-not-allowed pointer-events-none`}>
-            <span className="text-xs sm:text-sm">Berikutnya</span>
-            <ChevronRight size={16} />
+          <span className="inline-flex items-center gap-1.5 text-sm text-slate-600 cursor-not-allowed">
+            Berikutnya
+            <ChevronRight size={14} />
           </span>
         )}
       </div>
