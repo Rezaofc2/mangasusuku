@@ -37,7 +37,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="border-t border-white/5 py-4 text-center text-xs text-slate-500">
-        © {new Date().getFullYear()} KomikCat · Dibuat dengan <Heart size={11} className="inline text-pink-500 fill-pink-500" /> untuk pecinta komik
+        © {new Date().getFullYear()} Komik18+ · Dibuat dengan <Heart size={11} className="inline text-pink-500 fill-pink-500" /> untuk pecinta komik nsfw
       </div>
     </footer>
   );
