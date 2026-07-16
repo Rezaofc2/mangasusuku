@@ -3,9 +3,9 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'KomikCat — Baca Komik Manhwa Manga Manhua Bahasa Indonesia',
+  title: 'KOMIK18+ — Baca Manhwa Dewasa Bahasa Indonesia',
   description:
-    'Baca komik, manhwa, manga, dan manhua bahasa Indonesia gratis. Update setiap hari. Bypass blokir otomatis tanpa VPN.',
+    'Baca manhwa 18+ bahasa Indonesia gratis. Update setiap hari. Bypass blokir otomatis tanpa VPN.',
   generator: 'Next.js',
   icons: {
     icon: [
