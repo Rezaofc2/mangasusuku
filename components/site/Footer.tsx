@@ -18,7 +18,7 @@ export default function Footer() {
             </span>
           </div>
           <p className="text-sm text-slate-400 leading-relaxed">
-            Portal baca komik online — manhwa, manga, dan manhua bahasa Indonesia gratis, update setiap hari.
+            Portal baca komik online — manhwa 18+ bahasa Indonesia gratis, update setiap hari.
           </p>
         </div>
         <div>
@@ -37,7 +37,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="border-t border-white/5 py-4 text-center text-xs text-slate-500">
-        © {new Date().getFullYear()} Komik18+ · Dibuat dengan <Heart size={11} className="inline text-pink-500 fill-pink-500" /> untuk pecinta komik nsfw
+        © {new Date().getFullYear()} KomikCat · Dibuat dengan <Heart size={11} className="inline text-pink-500 fill-pink-500" /> untuk pecinta komik
       </div>
     </footer>
   );
